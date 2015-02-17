@@ -123,3 +123,9 @@ var server_port = process.env.PORT || 9000
 http.listen(server_port, function () {
   console.log("Listening on port #{server_port}. ^c to exit");
 });
+
+process.on('SIGINT', function() {
+  SyncGPIO.close(40).then(function () {    
+    process.exit();
+  })
+});
