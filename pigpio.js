@@ -17,7 +17,7 @@ var SyncGPIO = {
     var deferred = Q.defer();
     gpio.open(pin, mode, function (err) {
       if(err) {
-        console.log("Failed to open pin.", pin, state);
+        console.log("Failed to open pin.", pin, mode);
         deferred.reject(err)
       } else {
         deferred.resolve(true);
