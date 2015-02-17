@@ -44,8 +44,9 @@ var Pi = function (lightPin) {
   this.lightState = null;
   this.HIGH = 1;
   this.LOW = 0;
+  this.ready = SyncGPIO.open(lightPin, "output");
 
-  SyncGPIO.open(lightPin, "output")
+  
 
   // count is the number of times to change the state of the bulb.
   this.blink = function (count) {
@@ -61,13 +62,17 @@ var Pi = function (lightPin) {
   };
   // returns a promise to turn on
   this.turnOn = function () {
-    this.lightState = true;
-    return SyncGPIO.write(this.lightPin, this.HIGH);
+    self = this;
+    return SyncGPIO.write(this.lightPin, this.HIGH).then(function () {
+      this.lightState = true;
+    });
   };
   // returns a promise to turn off
   this.turnOff = function () {
-    this.lightState = false;
-    return SyncGPIO.write(this.lightPin, this.LOW);
+    self = this;
+    return SyncGPIO.write(this.lightPin, this.LOW).then(function () {
+      this.lightState = false;
+    });
   };
   this.toggle = function () {
     if (this.lightState === true) {
@@ -79,7 +84,9 @@ var Pi = function (lightPin) {
 };
 
 var MyPi = new Pi(7);
-MyPi.blink(10);
+MyPi.ready.then(function () {
+  MyPi.blink(10);
+});
 
 var app = require('express')();
 app.route('/').get(function (req, res) {
