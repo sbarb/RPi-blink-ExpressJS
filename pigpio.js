@@ -30,12 +30,12 @@ var Pi = function (lightPin) {
   // returns a promise to turn on
   this.turnOn = function () {
     this.lightState = true;
-    return this.write(this.lightPin, this.HIGH);
+    return SyncGPIO.write(this.lightPin, this.HIGH);
   };
   // returns a promise to turn off
   this.turnOff = function () {
     this.lightState = false;
-    return this.write(this.lightPin, this.LOW);
+    return SyncGPIO.write(this.lightPin, this.LOW);
   };
   this.toggle = function () {
     if (this.lightState === true) {
