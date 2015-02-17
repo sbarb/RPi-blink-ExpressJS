@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8" />
+  <title>LED - Switch</title>
+  <link type="text/css" rel="stylesheet"
+        href="{{ url_for('static',
+              filename='index.css')}}" />
+  <!--  -->
+  <!-- Google Anylitics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-59795326-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!--  -->
+  <!--  -->
+</head>
+<body>
+<!-- 
+<h1>LED is currently {{isOn}}</h1>
+ -->
+<!-- first ad -->
+<script type="text/javascript">
+    google_ad_client = "ca-pub-3921485183382006";
+    google_ad_slot = "9114624973";
+    google_ad_width = 320;
+    google_ad_height = 100;
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- first ad -->
+
+<!-- fourth ad -->
+<script type="text/javascript">
+    google_ad_client = "ca-pub-3921485183382006";
+    google_ad_slot = "6021557777";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- fourth ad -->
+
+<form action="LEDinfo" method="POST">
+<div>
+  <h1>Cut the LED</h1>
+  {% if isOn %}
+    <p><input class="off" type="submit" name="LED" value="OFF"></p>
+  {% else %}
+    <p><input class="on" type="submit" name="LED" value="ON"></p>
+  {% endif %}
+</div>
+</form>
+
+
+<!-- second ad -->
+<script type="text/javascript">
+    google_ad_client = "ca-pub-3921485183382006";
+    google_ad_slot = "1591358179";
+    google_ad_width = 300;
+    google_ad_height = 250;
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- second ad -->
+<!-- third ad -->
+<script type="text/javascript">
+    google_ad_client = "ca-pub-3921485183382006";
+    google_ad_slot = "4544824570";
+    google_ad_width = 300;
+    google_ad_height = 600;
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- third ad -->
+
+
+</body>
+</html>
