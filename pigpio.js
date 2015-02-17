@@ -45,7 +45,7 @@ var Pi = function (lightPin) {
   this.HIGH = 1;
   this.LOW = 0;
 
-  SyncGPIO.open(lightPin)
+  SyncGPIO.open(lightPin, "output")
 
   // count is the number of times to change the state of the bulb.
   this.blink = function (count) {
