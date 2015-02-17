@@ -90,7 +90,13 @@ MyPi.ready.then(function () {
 
 var app = require('express')();
 app.route('/').get(function (req, res) {
-  res.send(200, "Light is " + MyPi.lightState);
+  var btn;
+  if(MyPi.lightState){
+    btn = '<input class="off" type="submit" name="LED" value="OFF">'
+  } else {
+    btn = '<input class="on" type="submit" name="LED" value="ON">'
+  }
+  res.send(200, btn + "Light is " + MyPi.lightState);
 });
 
 app.route('/LEDinfo').post(function (req, res) {
@@ -106,13 +112,7 @@ app.route('/LEDinfo').post(function (req, res) {
       promise = MyPi.turnOff()
     }
     promise.then(function () {
-      var btn;
-      if(MyPi.lightState){
-        btn = '<input class="off" type="submit" name="LED" value="OFF">'
-      } else {
-        btn = '<input class="on" type="submit" name="LED" value="ON">'
-      }
-      res.send(200, btn + "Changing light maybe. Light is " + MyPi.lightState);
+      res.send(200, "Changing light maybe. Light is " + MyPi.lightState);
     });
   }
 });
