@@ -1,12 +1,42 @@
 var Q = require('q');
 var gpio = require("pi-gpio");
 var SyncGPIO = {
-  // (pin, state) TODO: bind gpio back to the method call
-  write: Q.nfbind(gpio.write),
-  // (pin, mod) TODO: bind gpio back to the method call?
-  open: Q.nfbind(gpio.write),
-  // (pin) TODO: bind gpio back to the method call?
-  close: Q.nfbind(gpio.close)
+  write: function (pin, state) {
+    var deferred = Q.defer();
+    gpio.write(pin, state, function (err) {
+      if(err) {
+        console.log("Failed to write to pin.", pin, state);
+        deferred.reject(err)
+      } else {
+        deferred.resolve(true);
+      }
+    });
+    return deferred.promise;
+  },
+  open: function (pin, mode) {
+    var deferred = Q.defer();
+    gpio.open(pin, mode, function (err) {
+      if(err) {
+        console.log("Failed to open pin.", pin, state);
+        deferred.reject(err)
+      } else {
+        deferred.resolve(true);
+      }
+    });
+    return deferred.promise;
+  },
+  close: function (pin) {
+    var deferred = Q.defer();
+    gpio.close(pin, function (err) {
+      if(err) {
+        console.log("Failed to close pin.", pin, state);
+        deferred.reject(err)
+      } else {
+        deferred.resolve(true);
+      }
+    });
+    return deferred.promise;
+  }
 };
 
 var Pi = function (lightPin) {
