@@ -29,7 +29,7 @@ var SyncGPIO = {
     var deferred = Q.defer();
     gpio.close(pin, function (err) {
       if(err) {
-        console.log("Failed to close pin.", pin, state);
+        console.log("Failed to close pin.", pin);
         deferred.reject(err)
       } else {
         deferred.resolve(true);
