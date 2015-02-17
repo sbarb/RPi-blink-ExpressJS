@@ -83,7 +83,7 @@ var Pi = function (lightPin) {
   }
 };
 
-var MyPi = new Pi(7);
+var MyPi = new Pi(40);
 MyPi.ready.then(function () {
   MyPi.blink(10);
 });
